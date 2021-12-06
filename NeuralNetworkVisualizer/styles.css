@@ -1,0 +1,152 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: Manrope, sans-serif;
+}
+
+:root {
+  /* Colors */
+  --primary-600: hsl(209, 74%, 40%);
+  --dark-800: rgb(25, 25, 25);
+  --dark-600: rgb(50, 50, 50);
+  --dark-400: rgb(75, 75, 75);
+  --dark-200: rgb(100, 100, 100);
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+.container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 7fr;
+}
+
+nav {
+  background: var(--dark-600);
+  padding: 0 25px;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: white;
+  display: flex;
+  gap: 0.5em;
+  width: max-content;
+  position: relative;
+  user-select: none;
+}
+
+.logo::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 70%;
+  width: 95%;
+  height: 3px;
+  background: white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+.logo__heading {
+  transform: translateY(-10%);
+  text-shadow: 0 0 1px white;
+}
+
+.logo__oval {
+  width: 45px;
+  height: 45px;
+  background: var(--primary-600);
+  border-radius: 100vh;
+  box-shadow: 2px 3px 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+#new-btns {
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.btn {
+  width: 13rem;
+  height: 3rem;
+  border-radius: 100vh;
+  border: none;
+  background: hsl(120, 86%, 33%);
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.5);
+  transition: transform 250ms ease-out;
+}
+.btn:hover {
+  transform: scale(1.02);
+}
+
+.main {
+  background: var(--dark-800);
+  position: relative;
+}
+
+.neural-network-field {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+}
+
+.layer {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 5em 0;
+  position: relative;
+}
+
+.layer.selected {
+  border-top: 1px solid white;
+}
+
+.layer::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: rgba(100 100 100 / 0.25);
+  transition: height 125ms ease-out;
+}
+
+.layer:hover::after {
+  height: 100%;
+}
+
+.neuron {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background: hsl(209, 74%, 40%);
+  cursor: pointer;
+  pointer-events: none;
+  box-shadow: 2px 2px 5px 0 rgba(5 5 5 / 0.5);
+}
