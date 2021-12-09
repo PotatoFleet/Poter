@@ -2,7 +2,9 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: Manrope, sans-serif;
+  font-family: "Readex Pro", sans-serif;
+  color: aliceblue;
+  font-weight: 400;
 }
 
 :root {
@@ -17,6 +19,30 @@
 body {
   margin: 0;
   overflow: hidden;
+}
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip::after {
+  content: "";
+  min-width: max-content;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  font-size: 0.75em;
+  padding: 2px 5px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  transform-origin: top left;
+  transform: translate(-50%, 50%) scale(0);
+  transition: transform 125ms ease-out;
+}
+
+.tooltip:hover::after {
+  transform: translate(-50%, 50%) scale(1);
 }
 
 .container {
@@ -83,7 +109,7 @@ nav {
 }
 
 .btn {
-  width: 13rem;
+  width: 14.5rem;
   height: 3rem;
   border-radius: 100vh;
   border: none;
@@ -91,7 +117,6 @@ nav {
   color: white;
   cursor: pointer;
   font-size: 1.2rem;
-  font-weight: bold;
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.5);
   transition: transform 250ms ease-out;
 }
@@ -122,23 +147,28 @@ nav {
   position: relative;
 }
 
-.layer.selected {
-  border-top: 1px solid white;
+.layer.selected::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10%;
+  height: 2px;
+  width: 100%;
+  background: rgba(200 200 200 / 0.75);
 }
 
 .layer::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 10%;
   height: 2px;
   width: 100%;
   background: rgba(100 100 100 / 0.25);
-  transition: height 125ms ease-out;
 }
 
 .layer:hover::after {
-  height: 100%;
+  background: rgb(175 175 175 / 0.25);
 }
 
 .neuron {
@@ -147,6 +177,58 @@ nav {
   border-radius: 50%;
   background: hsl(209, 74%, 40%);
   cursor: pointer;
-  pointer-events: none;
   box-shadow: 2px 2px 5px 0 rgba(5 5 5 / 0.5);
+}
+
+.menu {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 19px;
+  min-width: 200px;
+  max-width: 250px;
+  height: 350px;
+  background: var(--dark-600);
+  border-radius: 0.5em;
+  padding: 10px;
+  box-shadow: 2px 2px 5px 2px rgba(10 10 10 / 0.75);
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.selected-object-name {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  padding: 10px 0;
+}
+
+.ani::after {
+  content: "All Neuron Index";
+  left: 100%;
+  bottom: -50%;
+}
+
+.lni::after {
+  content: "Layer Neuron Index";
+  left: 125%;
+  bottom: -50%;
+}
+
+.key,
+.value {
+  display: inline-block;
+}
+
+.value-input {
+  display: inline-block;
+  padding: 5px 2px;
+  color: black;
+}
+.value-input:focus {
+  outline: none;
 }
