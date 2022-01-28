@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Dongle&family=Manrope:wght@500&family=Outfit&display=swap");
+
+:root {
+  --primary-clr: 119, 93, 134;
+  --secondary-clr: 249, 247, 128;
+  --primary-dark: 114, 80, 134;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: Outfit;
+  font-size: 1.1rem;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  scrollbar-color: rgb(var(--primary-clr)) rgba(0 0 0 / 0);
+  scrollbar-width: thin;
+}
